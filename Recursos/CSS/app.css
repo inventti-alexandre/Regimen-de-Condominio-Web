@@ -1,0 +1,258 @@
+﻿body{
+	font-family: Helvetica Neue,Helvetica,Arial,sans-serif;	    
+    background-size: cover;
+    margin:0;
+    padding: 0;
+}
+
+.nav > li > a:hover, .nav > li > a:focus {  
+  text-decoration: none;    
+  color: black;
+}
+
+.vertical-align {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.dropdown-cs {
+    position: relative;
+    display: inline-block;
+}
+
+.right-space{
+	margin-right: 1em;
+}
+
+.img-centrada{
+	width: 150px;
+	height: 150px;
+	margin-bottom: 1.5em;    
+}
+
+.remove-float{
+	float:none;
+}
+
+.bold{
+    font-weight: bold;
+}
+
+.top-space{
+	margin-top: 1.5em;
+}
+
+.big-top-space{
+	margin-top: 120px;
+}
+
+.large-padding{
+	padding: 10px 15px;
+}
+
+.border-dv{
+	border-radius: 3%;	
+	border-style: solid;
+	border-color: #E6E6E6;
+}
+.greenBG{
+	background-color: #00897B;
+}
+.greenText{
+    color:#00897B;
+}
+
+.white-text{
+	color:white;
+    background-color: #00897B;
+}
+
+
+ .white{
+ 	background-color: white;
+ }
+
+ .border{
+ 	border:solid 1px #eee;
+ }
+
+.tr:nth-of-type(odd){
+	background-color: #eee;
+}
+
+form.link{
+	display: inline-block;
+}
+
+form.link input[type="submit"]{
+	background-color: transparent;
+	border: none;
+	color:rgb(200,50,50);
+}
+.bkimg {
+    background-image: url("../imagenes/fondo.png");
+	background-size:     cover;                      /* <------ */
+    background-repeat:   no-repeat;
+    background-position: center center; 
+}
+
+.img-en-izq-user{
+	background: url(../Imagenes/user.png) no-repeat scroll 7px 7px;
+	padding-left:30px;
+}
+
+.img-en-izq-pass{
+	background: url(../Imagenes/pass.png) no-repeat scroll 7px 7px;
+	padding-left:30px;
+}
+
+img{
+	max-width: 100%;
+}
+
+.logo{
+	height: 25px;
+}
+.img-container{
+	width: 700px;
+	max-width: 100%;
+	margin: 0 auto;
+}
+
+.img-container h1, .img-container h2{
+	padding: 15px;
+	border-bottom: 1px solid #222;
+}
+
+.img-container p {
+	text-align: right;
+	font-size: 1.2em;
+	margin-top: 1em;
+}
+
+input[type="text"]{
+	display: block;
+	margin: 0;
+	width: 100%;							  		 
+	box-shadow: none;
+	border-radius: unset;
+}
+
+.centered{
+	float: none;
+    margin: 0 auto;  
+    display:inline-block;  
+}
+
+input[type="password"] {
+    display: block;
+    margin: 0;
+    width: 100%;
+    box-shadow: none;
+}								
+
+input[type="text"]:focus{ 
+	outline: none;
+}
+
+/* Profile sidebar */
+.profile-sidebar {
+  padding: 5px 0 0 0;
+  background: #fff;
+  border-radius: 5px;
+  height: 100vh;  
+}
+
+.profile-userpic img {
+  float: none;
+  margin: 0 auto;
+  width: 50%;
+  height: 50%;
+  -webkit-border-radius: 50% !important;
+  -moz-border-radius: 50% !important;
+  border-radius: 50% !important;
+}
+
+.profile-usertitle {
+  text-align: center;
+  margin-top: 0px;
+}
+
+.profile-usertitle-name {
+  color: #5a7391;
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 7px;
+}
+
+.profile-usertitle-job {
+  text-transform: uppercase;
+  color: #5b9bd1;
+  font-size: 12px;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+.profile-userbuttons {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.profile-userbuttons .btn {
+  text-transform: uppercase;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 6px 15px;
+  margin-right: 5px;
+}
+
+.profile-userbuttons .btn:last-child {
+  margin-right: 0px;
+}
+    
+.profile-usermenu {
+  margin-top: 0;
+}
+
+.profile-usermenu ul li {
+  border-bottom: 1px solid #f0f4f7;
+}
+
+.profile-usermenu ul li:last-child {
+  border-bottom: none;
+}
+
+.profile-usermenu ul li a {
+  color: #93a3b5;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.profile-usermenu ul li a i {
+  margin-right: 8px;
+  font-size: 14px;
+}
+
+.profile-usermenu ul li a:hover {
+  background-color: #fafcfd;
+  color: #5b9bd1;
+}
+
+.profile-usermenu ul li.active {
+  border-bottom: none;
+}
+
+.profile-usermenu ul li.active a {
+  color: #5b9bd1;
+  background-color: #f6f9fb;
+  border-left: 2px solid #5b9bd1;
+  margin-left: -2px;
+}
+
+/* Profile Content */
+.profile-content {
+  padding: 20px;
+  background: #fff;
+  min-height: 460px;
+}

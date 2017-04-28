@@ -1,0 +1,30 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="Start.master.cs" Inherits="MasterPage" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" 
+        href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>    
+    <link rel="stylesheet" 
+        href="Recursos/CSS/app.css"/>
+    <script src="Recursos/JS/app.js" type="text/javascript"></script>
+</head>
+<body class="bkimg">
+    <div class="navbar" style="background-color: #00897B;" runat="server">
+            <div class="container" runat="server">
+                <div class="navbar-header" runat="server">                    
+                    <a class="navbar-brand" runat="server" href="~/"> 
+                        <img src="./Recursos/Imagenes/Logo_Prnc.png" class="pull-left logo"/>
+                    </a>                   
+                </div>                                                                                        
+            </div>
+    </div>
+    <div class="" >          
+            <asp:ContentPlaceHolder id="Main" runat="server"></asp:ContentPlaceHolder>        
+    </div>
+</body>
+</html>

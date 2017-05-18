@@ -3,6 +3,23 @@
     background-size: cover;
     margin:0;
     padding: 0;
+    height: 100%;
+}
+
+.center_div{
+    margin: 0 auto;   
+}
+
+.rounded{
+    border-radius:5px;
+}
+
+input[type=text]{
+    border-radius:5px;
+}
+
+.add-margin{
+    margin:2px;       
 }
 
 .nav > li > a:hover, .nav > li > a:focus {  
@@ -64,8 +81,7 @@
 }
 
 .white-text{
-	color:white;
-    background-color: #00897B;
+	color:white;    
 }
 
 
@@ -91,15 +107,24 @@ form.link input[type="submit"]{
 	color:rgb(200,50,50);
 }
 .bkimg {
-    background-image: url("../imagenes/fondo.png");
+    background: url(../Imagenes/fondo.PNG);
 	background-size:     cover;                      /* <------ */
     background-repeat:   no-repeat;
     background-position: center center; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
 }
 
 .img-en-izq-user{
 	background: url(../Imagenes/user.png) no-repeat scroll 7px 7px;
 	padding-left:30px;
+}
+
+.img-en-izq-buscar{
+	background: url(../Imagenes/ic_find.png) no-repeat scroll 10px 10px;
+	padding-left:30px;
+    vertical-align: central;   
 }
 
 .img-en-izq-pass{
@@ -255,4 +280,96 @@ input[type="text"]:focus{
   padding: 20px;
   background: #fff;
   min-height: 460px;
+}
+
+        .pagination-ys {
+    /*display: inline-block;*/
+    padding-left: 0;
+    margin: 20px 0;
+    border-radius: 4px;
+}
+
+.pagination-ys table > tbody > tr > td {
+    display: inline;
+}
+
+.pagination-ys table > tbody > tr > td > a,
+.pagination-ys table > tbody > tr > td > span {
+    position: relative;
+    float: left;
+    padding: 8px 12px;
+    line-height: 1.42857143;
+    text-decoration: none;
+    color: #428bca;
+    background-color: #ffffff;
+    border: 1px solid #dddddd;
+    margin-left: -1px;
+}
+
+.pagination-ys table > tbody > tr > td > span {
+    position: relative;
+    float: left;
+    padding: 8px 12px;
+    line-height: 1.42857143;
+    text-decoration: none;    
+    margin-left: -1px;
+    z-index: 2;
+    color: #aea79f;
+    background-color: #f5f5f5;
+    border-color: #dddddd;
+    cursor: default;
+}
+
+.pagination-ys table > tbody > tr > td:first-child > a,
+.pagination-ys table > tbody > tr > td:first-child > span {
+    margin-left: 0;
+    border-bottom-left-radius: 4px;
+    border-top-left-radius: 4px;
+}
+
+.pagination-ys table > tbody > tr > td:last-child > a,
+.pagination-ys table > tbody > tr > td:last-child > span {
+    border-bottom-right-radius: 4px;
+    border-top-right-radius: 4px;
+}
+
+.pagination-ys table > tbody > tr > td > a:hover,
+.pagination-ys table > tbody > tr > td > span:hover,
+.pagination-ys table > tbody > tr > td > a:focus,
+.pagination-ys table > tbody > tr > td > span:focus {
+    color: #000000;
+    background-color: #eeeeee;
+    border-color: #dddddd;
+}
+
+.nav-tabs { border-bottom: 2px solid #DDD; }
+    .nav-tabs > li[role=presentation].active > a[role=tab], 
+    .nav-tabs > li[role=presentation].active > a[role=tab]:focus, 
+    .nav-tabs > li[role=presentation].active > a[role=tab]:hover 
+    { 
+        border-width: 0;
+    }
+    .nav-tabs > li[role=presentation] > a[role=tab] 
+    { 
+        border: none; color: #666; 
+    }
+        .nav-tabs > li[role=presentation].active > a[role=tab], 
+        .nav-tabs > li[role=presentation] > a[role=tab]:hover 
+        { 
+            border: none; color: #4285F4 !important; background: transparent; 
+        }
+        .nav-tabs > li[role=presentation] > a[role=tab]::after 
+        { 
+            content: ""; background: #4285F4; height: 2px; position: absolute; width: 100%; left: 0px; bottom: -1px; transition: all 250ms ease 0s; transform: scale(0); 
+        }
+    .nav-tabs > li[role=presentation].active > a[role=tab]::after, 
+    .nav-tabs > li[role=presentation]:hover > a[role=tab]::after 
+    { 
+        transform: scale(1); 
+    }    
+.tab-nav > li[role=presentation] > a[role=tab]::after 
+{ background: #21527d none repeat scroll 0% 0%; color: #fff; }
+.tab-content{padding:20px}
+.max-width{
+    max-width: 100px;
 }

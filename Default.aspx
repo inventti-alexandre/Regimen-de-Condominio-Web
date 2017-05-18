@@ -1,4 +1,9 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Main.master" AutoEventWireup="true" CodeFile="Default.aspx.cs" Inherits="_Default" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Main.master" 
+    AutoEventWireup="true" CodeFile="Default.aspx.cs" Inherits="_Default"%>
+
+<%@ MasterType 
+    virtualpath="~/Main.master"
+%>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainBlock" Runat="Server">
     <div>

@@ -1,4 +1,5 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Start.master" AutoEventWireup="true" CodeFile="Login.aspx.cs" Inherits="Login" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Start.master" 
+    AutoEventWireup="true" CodeFile="Login.aspx.cs" Inherits="Login" %>
 
 
 <asp:Content ID="Content2" ContentPlaceHolderID="Main" Runat="Server">    
@@ -10,7 +11,7 @@
         <div class="form-group">            
             <label for="usuario" class="text-center">Usuario</label>
             <asp:Textbox name="usuario" placeholder="Usuario" ToolTip="Ingresa Usuario de Active Directory" 
-                 id="usuario" runat="server" CssClass="form-control img-en-izq-user"/>            
+                 id="usuario" runat="server" CssClass="form-control img-en-izq-user rounded" style="border-radius:5px"/>            
             <asp:RequiredFieldValidator id="ValidateUser" runat="server"
                 ControlToValidate="usuario"
                 ErrorMessage="Se debe de ingresar usuario"

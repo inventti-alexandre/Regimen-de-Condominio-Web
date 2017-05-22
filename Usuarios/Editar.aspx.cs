@@ -19,14 +19,19 @@ public partial class Usuarios_Editar : System.Web.UI.Page
             //Reviso que si haya un usuario logeado
             if (Session[Constant.KeyUserSession] != null)
             {
-                //Si existe Id dentro de la URL
-                if (HasUserParam())
+                if (this.Master.IsUserAdmin())
                 {
-                    string usuarioActual = GetUserParam(); 
-                    headVar.Text = usuarioActual;
-                    divAlert.Visible = false;                    
-                    new SqlTransaction(usuarioActual, SelectDirRegional, ResultadosDR).Run();                    
+                    //Si existe Id dentro de la URL
+                    if (HasUserParam())
+                    {
+                        string usuarioActual = GetUserParam();
+                        headVar.Text = usuarioActual;
+                        divAlert.Visible = false;
+                        new SqlTransaction(usuarioActual, SelectDirRegional, ResultadosDR).Run();
+                    }
                 }
+                else
+                    Response.Redirect("~/Default.aspx");
             }
         }
     }
@@ -35,7 +40,7 @@ public partial class Usuarios_Editar : System.Web.UI.Page
     {
         string usuarioBusqueda = input.ToString(),
                 keyUserParam = "@Usuario",
-                query = Constant.GetDRUsuario + " WHERE CLA_USUARIO = " + keyUserParam + " ORDER BY ID_DR_SEMBRADO";
+                query = Queries.GetDRUsuario + " WHERE CLA_USUARIO = " + keyUserParam + " ORDER BY ID_DR_SEMBRADO";
 
         Dictionary<string, object> dictionaryParam = new Dictionary<string, object>()
         {
@@ -109,7 +114,7 @@ public partial class Usuarios_Editar : System.Web.UI.Page
             string Usuario = GetUserParam(),
                     keyParamUsuario = "@Usuario",
                     keyParamId = "@IdDR",
-                    query = Constant.GetFraccsUsuario + string.Format(" WHERE CLA_USUARIO = {0} AND ID_DR_SEMBRADO = {1}", keyParamUsuario, keyParamId);
+                    query = Queries.GetFraccsUsuario + string.Format(" WHERE CLA_USUARIO = {0} AND ID_DR_SEMBRADO = {1}", keyParamUsuario, keyParamId);
             
             Dictionary<string, object> dictionaryParams = new Dictionary<string, object>()
             {
@@ -181,7 +186,7 @@ public partial class Usuarios_Editar : System.Web.UI.Page
 
         where = string.Format(" WHERE CLA_USUARIO = {0} AND ID_DR_SEMBRADO = {1} AND NOMBRE LIKE {2} ORDER BY ID_SEMBRADO", keyParamUser, keyParamIDDR, keyParamSearch);
 
-        query = Constant.GetFraccsUsuario + where;
+        query = Queries.GetFraccsUsuario + where;
 
         DataSet dtSet = conn.SelectTables(query, parameters);
 
@@ -236,7 +241,7 @@ public partial class Usuarios_Editar : System.Web.UI.Page
             {"@FechaMod", DateTime.Now }
         };
 
-        int rowsAffected = conn.Command(Constant.UpdateDRUsuario, dicParams);
+        int rowsAffected = conn.Command(Queries.UpdateDRUsuario, dicParams);
 
         if (rowsAffected == 1)
             msg = "Se actualizó 1 registro de exitosamente";

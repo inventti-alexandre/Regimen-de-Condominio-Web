@@ -11,7 +11,11 @@
                 <b><asp:Label runat="server" ID="headVar" Text="Usuario no encontrado"></asp:Label></b>                                                                         
             </div>
             <div class="panel-body">
-              <form class="form-horizontal" runat="server">                                     
+
+              <form class="form-horizontal" runat="server"> 
+                  <asp:ScriptManager runat="server"></asp:ScriptManager>                                    
+                  <asp:UpdatePanel runat="server">
+                    <ContentTemplate>
                     <div class="panel" >
                         <div class="panel-heading">
                             <h4 runat="server" id="headUsuario" class="text-primary">Edición</h4> 
@@ -72,7 +76,8 @@
                             </div>
                         </div>
                     </div>                                      
-                  
+                    </ContentTemplate>
+                  </asp:UpdatePanel>
                 </form>
             </div>
             <div class="panel-footer">

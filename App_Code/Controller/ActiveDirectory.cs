@@ -9,42 +9,46 @@ using System.DirectoryServices.AccountManagement;
 /// </summary>
 public static class ActiveDirectory
 {
-    public static bool Authenticate(string user, string password, string domain)
+    public static bool Authenticate(string user, string password, string domain, out string error)
     {
         bool isValid = false;
+
+        error = "";
 
         try {
             using (PrincipalContext pc = new PrincipalContext(ContextType.Domain, domain))
             {
                 isValid = pc.ValidateCredentials(user, password);
             }
-        }catch(Exception)
+        }catch(Exception ex)
         {
-
+            error = ex.Message;
         }
 
         return isValid;
     }
 
-    public static string GetDisplayName(string user, string domain)
+    public static string GetDisplayName(string user, string domain, out string error)
     {
         string DisplayName = "";
+        error = "";       
         try {
             using (PrincipalContext pc = new PrincipalContext(ContextType.Domain, domain))
             {
                 UserPrincipal usr = UserPrincipal.FindByIdentity(pc, user);
                 DisplayName = usr.DisplayName;
             }
-        }catch(Exception)
+        }catch(Exception ex)
         {
-
+           error = ex.Message;
         }
+
         return DisplayName;
     }
 
     public static string GetName(string user, string domain)
     {
-        string GivenName = "";
+        string GivenName = "", error = "";
         try
         {
             using (PrincipalContext pc = new PrincipalContext(ContextType.Domain, domain))
@@ -53,16 +57,17 @@ public static class ActiveDirectory
                 GivenName = usr.GivenName;
             }
         }
-        catch (Exception)
+        catch (Exception ex)
         {
-
+            error = ex.Message;
         }
         return GivenName;
     }
 
-    public static bool IsLocked(string user, string domain)
+    public static bool IsLocked(string user, string domain, out string error)
     {
         bool isLocked = false;
+        error = "";
         try {
             using (PrincipalContext pc = new PrincipalContext(ContextType.Domain, domain))
             {
@@ -71,9 +76,9 @@ public static class ActiveDirectory
                     isLocked = usr.IsAccountLockedOut();
             }
 
-        }catch(Exception)
+        }catch(Exception ex)
         {
-            
+            error = ex.Message;
         }
         return isLocked;
     }

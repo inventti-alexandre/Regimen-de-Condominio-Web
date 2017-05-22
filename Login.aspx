@@ -1,5 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Start.master" 
-    AutoEventWireup="true" CodeFile="Login.aspx.cs" Inherits="Login" %>
+    AutoEventWireup="true" CodeFile="Login.aspx.cs" Inherits="Login" Async="true"  AsyncTimeout="90"%>
 
 
 <asp:Content ID="Content2" ContentPlaceHolderID="Main" Runat="Server">    
@@ -31,7 +31,7 @@
 
         <div class="row top-space text-center">
             <div class="col-xs-4 col-sm-6 centered">
-                <input type="button" value="Iniciar sesión" class="btn btn-default text-center greenText bold"
+                <input type="button" value="Iniciar sesión" class="btn btn-default text-center greenText bold add-margin"
                     runat="server" id="btnEnviarLogin" onserverclick="btnEnviarLogin_ServerClick" />                
             </div>
             <div class="col-xs-4 col-sm-6 centered"></div>

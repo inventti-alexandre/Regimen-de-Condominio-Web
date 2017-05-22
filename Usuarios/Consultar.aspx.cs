@@ -9,20 +9,20 @@ using System.Web.UI.WebControls;
 
 public partial class Usuarios_Consultar : System.Web.UI.Page
 {
-    private string Usuario = "";
 
     protected void Page_Load(object sender, EventArgs e)
     {
         this.Master.SetActiveClasses("liUsuarios");
 
         if (!Page.IsPostBack && Session[Constant.KeyUserSession] != null)
-        {            
-            string[] detailSession = Session[Constant.KeyUserSession].ToString().Split('-');
-
-            if (detailSession.Count() > 0)
-                Usuario = detailSession[0];            
-
-            new SqlTransaction(null, EjecutarQuery, Resultado).Run();
+        {
+            if (this.Master.IsUserAdmin())
+            {
+                new SqlTransaction(null, EjecutarQuery, Resultado).Run();
+            }
+            else
+                Response.Redirect("~/Default.aspx");
+            
         }
     }
 
@@ -48,13 +48,13 @@ public partial class Usuarios_Consultar : System.Web.UI.Page
 
     private object EjecutarQuery(SQL_Connector conn, object input, BackgroundWorker bg)
     {
-        return conn.SelectTables(Constant.GetUsuariosConteo + " ORDER BY CLA_USUARIO");
+        return conn.SelectTables(Queries.GetUsuariosConteo + " ORDER BY CLA_USUARIO");
     }
 
     protected void gridUsuarios_PageIndexChanging(object sender, GridViewPageEventArgs e)
     {
         gridUsuarios.PageIndex = e.NewPageIndex;
-        new SqlTransaction(null, EjecutarQuery, Resultado).Run();
+        new SqlTransaction(null, Filtrado, Resultado).Run();
     }
 
     private object Filtrado(SQL_Connector conn, object input, BackgroundWorker bg)
@@ -63,12 +63,12 @@ public partial class Usuarios_Consultar : System.Web.UI.Page
 
         Dictionary<string, object> parameters = new Dictionary<string, object>()
         {
-            { keyParam, '%'+txtSearch.Text+'%' }
+            { keyParam, ('%'+ txtSearch.Text ?? "") +'%' }
         };
 
         string query = "";
 
-        query = Constant.GetUsuariosConteo + " WHERE CLA_USUARIO LIKE " + keyParam + " ORDER BY CLA_USUARIO";
+        query = Queries.GetUsuariosConteo + " WHERE CLA_USUARIO LIKE " + keyParam + " ORDER BY CLA_USUARIO";
 
         return conn.SelectTables(query, parameters);
     }

@@ -11,14 +11,18 @@ public partial class Variables_Consultar : System.Web.UI.Page
 {
     DataSet ds = new DataSet();
     
-
     protected void Page_Load(object sender, EventArgs e)
     {
         this.Master.SetActiveClasses("liVariables");    
                    
-        if (!Page.IsPostBack && Session[Constant.KeyUserSession] != null )
+        if (!Page.IsPostBack && this.Master.IsUserLogged())
         {
-            new SqlTransaction(null, obtieneVariables, Resultado).Run();            
+            if (this.Master.IsUserAdmin())
+            {
+                new SqlTransaction(null, obtieneVariables, Resultado).Run();
+            }
+            else
+                Response.Redirect("~/Default.aspx");
         }
     }
 
@@ -46,7 +50,7 @@ public partial class Variables_Consultar : System.Web.UI.Page
 
     private object obtieneVariables(SQL_Connector conn, object input, BackgroundWorker bg)
     {
-        return conn.SelectTables(Constant.GetVariables);
+        return conn.SelectTables(Queries.GetVariables);
     }
 
     protected void gridVariables_RowEditing(object sender, GridViewEditEventArgs e)
@@ -87,7 +91,7 @@ public partial class Variables_Consultar : System.Web.UI.Page
 
         where = string.Format(" WHERE NOM_CORTO like {0} OR NOM_VAR like {0} OR NOM_TIPO_BLOQUE like {0} OR DESC_UNIDAD like {0} ORDER BY ID_VAR", keyParam);
 
-        query = Constant.GetVariables + where;
+        query = Queries.GetVariables + where;
 
         return conn.SelectTables(query, parameters);
     }

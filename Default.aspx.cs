@@ -12,13 +12,8 @@ public partial class _Default : System.Web.UI.Page
         this.Master.SetActiveClasses("liHome");
 
         if (Session[Constant.KeyUserSession] != null)
-        {         
-            string Nombre = "";
-
-            string[] detailSession = Session[Constant.KeyUserSession].ToString().Split('-');
-
-            if (detailSession.Count() > 0)
-                Nombre = detailSession[detailSession.Count() - 1];
+        {
+            string Nombre = this.Master.GetSessionUserName();
 
             h2Welcome.InnerHtml = "Bienvenido(a) " +  Nombre;
         }

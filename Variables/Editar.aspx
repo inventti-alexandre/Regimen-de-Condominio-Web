@@ -22,7 +22,7 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="control-label col-sm-2" for="txtNomVariable">Nombre</label>
+                        <label class="control-label col-sm-2" for="txtNomVariable">Descripción</label>
                         <div class="col-sm-8">
                             <input type="text" class="form-control" id="txtNomVariable" runat="server" style="border-radius:5px;" required="required" placeholder="Ingresa Valor"/>
                         </div>

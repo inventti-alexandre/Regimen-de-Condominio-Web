@@ -44,7 +44,7 @@ public partial class Machotes_Consultar : System.Web.UI.Page
             {keyParamUsuario, input.ToString() }
         };
 
-        query = Constant.GetEncMachotes + " WHERE CLA_USUARIO = " + keyParamUsuario + " ORDER BY ID_MACHOTE";
+        query = Queries.GetEncMachotes + " WHERE CLA_USUARIO = " + keyParamUsuario + " ORDER BY ID_MACHOTE";
 
         DataSet dtSet = conn.SelectTables(query, dicParams);
 
@@ -56,7 +56,8 @@ public partial class Machotes_Consultar : System.Web.UI.Page
 
     protected void gridMachotes_PageIndexChanging(object sender, GridViewPageEventArgs e)
     {
-
+        gridMachotes.PageIndex = e.NewPageIndex;
+        new SqlTransaction(null, Filtrado, Resultado).Run();
     }
 
     protected void gridMachotes_RowEditing(object sender, GridViewEditEventArgs e)
@@ -86,7 +87,7 @@ public partial class Machotes_Consultar : System.Web.UI.Page
 
         Dictionary<string, object> parameters = new Dictionary<string, object>()
         {
-            { keyParamBuscar, '%'+txtSearch.Text+'%' },
+            { keyParamBuscar, '%'+ (txtSearch.Text ?? "") +'%' },
             { keyParamClaUsuario, input.ToString() }
         };
 
@@ -95,7 +96,7 @@ public partial class Machotes_Consultar : System.Web.UI.Page
 
         where = string.Format(" WHERE CLA_USUARIO = {1} AND (ENC_MACHOTE like {0} OR NOM_DR like {0} OR CANT_VIVS like {0}) ORDER BY ID_MACHOTE", keyParamBuscar, keyParamClaUsuario);
 
-        query = Constant.GetEncMachotes + where;
+        query = Queries.GetEncMachotes + where;
         
         DataSet dtSet = conn.SelectTables(query, parameters);
 

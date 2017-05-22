@@ -19,15 +19,23 @@ public partial class Variables_Editar : System.Web.UI.Page
         {
             //Reviso que si haya un usuario logeado
             if (Session[Constant.KeyUserSession] != null)
-            {
-                //Si existe Id dentro de la URL
-                if (Request.QueryString["Id"] != null)
+            {                
+                if (this.Master.IsUserAdmin())
                 {
-                    //Reviso que sea un Id Válido
-                    if (int.TryParse(Request.QueryString["Id"], out IdParameter))
-                    {      
-                        //Realizo al consulta para obtener el dato                  
-                        new SqlTransaction(IdParameter, EjecutaQuery, ResultadosQuery).Run();
+                    //Si existe Id dentro de la URL
+                    if (Request.QueryString["Id"] != null)
+                    {
+                        //Reviso que sea un Id Válido
+                        if (int.TryParse(Request.QueryString["Id"], out IdParameter))
+                        {
+                            //Realizo al consulta para obtener el dato                  
+                            new SqlTransaction(IdParameter, EjecutaQuery, ResultadosQuery).Run();
+                        }
+                        else
+                        {
+                            //Si el Id no es válido sólo lleno los combobox
+                            new SqlTransaction(null, EjecutaQuery, ResultadosQuery).Run();
+                        }
                     }
                     else
                     {
@@ -36,10 +44,7 @@ public partial class Variables_Editar : System.Web.UI.Page
                     }
                 }
                 else
-                {
-                    //Si el Id no es válido sólo lleno los combobox
-                    new SqlTransaction(null, EjecutaQuery, ResultadosQuery).Run();
-                }
+                    Response.Redirect("~/Default.aspx");
             }
         }
     }
@@ -48,13 +53,13 @@ public partial class Variables_Editar : System.Web.UI.Page
     {
         Dictionary<string, object> paramId = new Dictionary<string, object>();
 
-        string queryCatalogos = string.Join(" ", Constant.GetUnidades, Constant.GetBloques);
+        string queryCatalogos = string.Join(" ", Queries.GetUnidades, Queries.GetBloques);
 
         string nameIdParam = "@Id";
 
         if (input != null)
         {
-            string queryOneVar = Constant.GetVariables + " WHERE ID_VAR = " + nameIdParam;
+            string queryOneVar = Queries.GetVariables + " WHERE ID_VAR = " + nameIdParam;
 
             queryCatalogos = queryCatalogos + " " + queryOneVar;
 
@@ -188,13 +193,13 @@ public partial class Variables_Editar : System.Web.UI.Page
             { "@FechaMod", DateTime.Now }           
         };
 
-        int idInserted = conn.Command(Constant.InsertVars, dictionaryParams, true);
+        int idInserted = conn.Command(Queries.InsertVars, dictionaryParams, true);
 
         if (idInserted > 0)
         {
             msg = "Se insertó el registro de manera correcta";
             txtIdVar.Value = idInserted.ToString();
-            headVar.Text = txtNomCorto.Value;
+            headVar.Text = txtNomVariable.Value;
         }
         else
             msg = "No se pudo insertar el registro";
@@ -235,7 +240,7 @@ public partial class Variables_Editar : System.Web.UI.Page
             { "@IdVar", (int)input }            
         };
 
-        int rowsAffected = conn.Command(Constant.UpdateVars, dictionaryParams);
+        int rowsAffected = conn.Command(Queries.UpdateVars, dictionaryParams);
 
         if (rowsAffected == 1)
             msg = "Se actualizó 1 registro";

@@ -1,5 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Main.master" 
-    AutoEventWireup="true" CodeFile="Default.aspx.cs" Inherits="_Default"%>
+    AutoEventWireup="true" CodeFile="Default.aspx.cs" Inherits="_Default" Async="true"%>
 
 <%@ MasterType 
     virtualpath="~/Main.master"

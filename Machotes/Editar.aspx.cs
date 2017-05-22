@@ -168,10 +168,10 @@ public partial class Machotes_Editar : System.Web.UI.Page
             { paramUsuario, Usuario }            
         };
 
-        query = string.Join(" ",    Constant.GetDescViviendas,
-                                    Constant.GetDRUsuario + " WHERE CLA_USUARIO = " + paramUsuario,
-                                    Constant.GetTipoBloque,
-                                    Constant.GetVariables);
+        query = string.Join(" ",    Queries.GetDescViviendas,
+                                    Queries.GetDRUsuario + " WHERE CLA_USUARIO = " + paramUsuario,
+                                    Queries.GetTipoBloque,
+                                    Queries.GetVariables);
 
         if(input != null)
         {
@@ -180,9 +180,9 @@ public partial class Machotes_Editar : System.Web.UI.Page
             //Agrego el parámetro para la consulta
             dicParams.Add(paramIdMachote, idMachote);
 
-            query = query + string.Format(" {0} WHERE CLA_USUARIO = {1} AND ID_MACHOTE = {2}", Constant.GetEncMachotes, paramUsuario, paramIdMachote);
+            query = query + string.Format(" {0} WHERE CLA_USUARIO = {1} AND ID_MACHOTE = {2}", Queries.GetEncMachotes, paramUsuario, paramIdMachote);
 
-            query = query + string.Format(" {0} WHERE ID_MACHOTE = {1} ORDER BY ORDEN", Constant.GetBloquesBase, paramIdMachote);
+            query = query + string.Format(" {0} WHERE ID_MACHOTE = {1} ORDER BY ORDEN", Queries.GetBloquesBase, paramIdMachote);
         }
 
         return conn.SelectTables(query, dicParams);
@@ -307,7 +307,7 @@ public partial class Machotes_Editar : System.Web.UI.Page
             {paramIdTipoBloque, Convert.ToInt32(input) }
         };
 
-        query = Constant.GetVariables + " WHERE ID_TIPO_BLOQUE = " + paramIdTipoBloque;
+        query = Queries.GetVariables + " WHERE ID_TIPO_BLOQUE = " + paramIdTipoBloque;
 
         DataSet dtSet = conn.SelectTables(query, dicParams);
 

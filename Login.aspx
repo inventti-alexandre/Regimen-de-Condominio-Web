@@ -3,7 +3,7 @@
 
 
 <asp:Content ID="Content2" ContentPlaceHolderID="Main" Runat="Server">    
-    <img src="Recursos/Imagenes/layersM.png"
+    <img src="Recursos/Imagenes/AutodeskRegimen.png"
         class="center-block remove-float img-centrada top-space"/>
     <asp:label id="lblMessageError" Visible="false" Cssclass="text-center center-block" runat="server"></asp:label><br />
     <div class="col-md-4 remove-float center-block border-dv">
@@ -31,7 +31,7 @@
 
         <div class="row top-space text-center">
             <div class="col-xs-4 col-sm-6 centered">
-                <input type="button" value="Iniciar sesión" class="btn btn-default text-center greenText bold add-margin"
+                <input type="button" value="Iniciar sesión" class="btn btn-default text-center bold add-margin"
                     runat="server" id="btnEnviarLogin" onserverclick="btnEnviarLogin_ServerClick" />                
             </div>
             <div class="col-xs-4 col-sm-6 centered"></div>

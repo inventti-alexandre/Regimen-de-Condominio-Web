@@ -80,7 +80,7 @@
                         <div class="col-sm-2"></div>
                         <div class="col-sm-8">
                             <asp:Button runat="server" CssClass="btn btn-primary" Text="Enviar" ID="btnEnviar" OnClick="btnEnviar_Click"/>
-                            <asp:Button runat="server" CssClass="btn btn-danger" Text="Cancelar" ID="btnCancelar" OnClick="btnCancelar_Click"/>
+                            <asp:Button runat="server" CssClass="btn btn-danger" Text="Cancelar" ID="btnCancelar" OnClick="btnCancelar_Click" CausesValidation="False" formnovalidate="true"/>
                         </div>
                     </div>
                   

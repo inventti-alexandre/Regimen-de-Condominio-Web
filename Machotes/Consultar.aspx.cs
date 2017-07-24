@@ -13,6 +13,8 @@ public partial class Machotes_Consultar : System.Web.UI.Page
     {
         this.Master.SetActiveClasses("liMachotes");
 
+        Session[Constant.KeyUserSession] = "MNIETO - Manuel Alejandro Nieto Lara";
+
         if (!Page.IsPostBack && Session[Constant.KeyUserSession] != null)
         {
             new SqlTransaction(this.Master.GetSessionUser(), obtenerEncabezados, Resultado).Run();
